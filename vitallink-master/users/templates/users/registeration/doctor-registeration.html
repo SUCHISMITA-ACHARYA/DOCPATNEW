@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Forms</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-white shadow p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-xl font-bold">Healthcare App</div>
+            <ul class="flex space-x-4">
+                <li><a href="#" class="text-gray-600 hover:text-blue-500">Home</a></li>
+                <li><a href="#" class="text-gray-600 hover:text-blue-500">About Us</a></li>
+                <li><a href="#" class="text-gray-600 hover:text-blue-500">Support</a></li>
+                <li><a href="#" class="text-gray-600 hover:text-blue-500">Sign In</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-blue-50 py-20">
+        <div class="container mx-auto flex items-center justify-between">
+            <div>
+                <h1 class="text-4xl font-bold mb-4">Welcome to Healthcare App</h1>
+                <p class="text-lg mb-6">A comprehensive solution for patients and doctors.</p>
+                <a href="#register" class="px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Register Now</a>
+            </div>
+            <div>
+                <img src="animated_image_placeholder.png" alt="Healthcare Animation" class="rounded-lg shadow-lg">
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctor Registration Form -->
+    <section id="register" class="py-10">
+        <div class="container mx-auto bg-white p-8 rounded shadow">
+            <h2 class="text-2xl font-bold mb-6">Doctor Registration</h2>
+            <form action="/doctor_register" method="POST" class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-gray-700">First Name</label>
+                        <input type="text" name="first_name" class="w-full border rounded p-2" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700">Last Name</label>
+                        <input type="text" name="last_name" class="w-full border rounded p-2" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700">Age</label>
+                        <input type="number" name="age" class="w-full border rounded p-2" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700">Sex</label>
+                        <select name="sex" class="w-full border rounded p-2">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700">Degree</label>
+                        <input type="text" name="degree" class="w-full border rounded p-2" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700">Specialist</label>
+                        <select name="specialist"  class="w-full border rounded p-2">
+                            <option value="NIL">NIL</option>
+                            <option value="General Medicine">General Medicine</option>
+                            <option value="Pediatrics">Pediatrics</option>
+                            <option value="Geriatrics">Geriatrics</option>
+                            <option value="Allergist">Allergist</option>
+                            <option value="Cardiologist">Cardiologist</option>
+                            <option value="Dermatologist">Dermatologist</option>
+                            <option value="Endocrinologist">Endocrinologist</option>
+                            <option value="Gastroenterologist">Gastroenterologist</option>
+                            <option value="Hematologist">Hematologist</option>
+                            <option value="Nephrologist">Nephrologist</option>
+                            <option value="Neurologist">Neurologist</option>
+                            <option value="Oncologist">Oncologist</option>
+                            <option value="Pulmonologist">Pulmonologist</option>
+                            <option value="Rheumatologist">Rheumatologist</option>
+                            <option value="Cardiothoracic Surgeon">Cardiothoracic Surgeon</option>
+                            <option value="Colorectal Surgeon">Colorectal Surgeon</option>
+                            <option value="General Surgeon">General Surgeon</option>
+                            <option value="Neurosurgeon">Neurosurgeon</option>
+                            <option value="Ophthalmologist">Ophthalmologist</option>
+                            <option value="Oral and Maxillofacial Surgeon">Oral and Maxillofacial Surgeon</option>
+                            <option value="Orthopedic Surgeon">Orthopedic Surgeon</option>
+                            <option value="Otolaryngologist(ENT)">Otolaryngologist(ENT)</option>
+                            <option value="Pediatric Surgeon">Pediatric Surgeon</option>
+                            <option value="Plastic Surgeon">Plastic Surgeon</option>
+                            <option value="Urologist">Urologist</option>
+                            <option value="Vascular Surgeon">Vascular Surgeon</option>
+                            <option value="Anesthesiologist">Anesthesiologist</option>
+                            <option value="Pathologist">Pathologist</option>
+                            <option value="Physiatrist">Physiatrist</option>
+                            <option value="Psychiatrist">Psychiatrist</option>
+                            <option value="Radiologist">Radiologist</option>
+                            <option value="BDA">BDA</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-gray-700">Aadhar/Authentication</label>
+                    <input type="text" name="aadhar" class="w-full border rounded p-2" required>
+                </div>
+                <div>
+                    <label class="block text-gray-700">Doctor Certificate</label>
+                    <input type="file" name="certificate" class="w-full border rounded p-2" required>
+                </div>
+                <div>
+                    <label class="block text-gray-700">Email</label>
+                    <input type="email" name="email" class="w-full border rounded p-2" required>
+                </div>
+                <div>
+                    <label class="block text-gray-700">Mobile Number</label>
+                    <input type="tel" name="mobile" class="w-full border rounded p-2" required>
+                </div>
+                <div>
+                    <label class="block text-gray-700">Clinic/Hospital Name</label>
+                    <input type="text" name="clinic_name" class="w-full border rounded p-2">
+                </div>
+                <div>
+                    <label class="block text-gray-700">Clinic Address</label>
+                    <textarea name="clinic_address" class="w-full border rounded p-2"></textarea>
+                </div>
+                <div>
+                    <label class="block text-gray-700">Clinic Contact Number</label>
+                    <input type="tel" name="clinic_number" class="w-full border rounded p-2">
+                </div>
+                <div>
+                    <label class="block text-gray-700">Allow Profile Suggestion</label>
+                    <select name="profile_suggestion" class="w-full border rounded p-2">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="flex items-center">
+                    <input type="checkbox" name="contact_through_app" id="contact_app" class="mr-2">
+                    <label for="contact_app" class="text-gray-700">Allow Contact Through App</label>
+                </div>
+                <div class="mt-4">
+                    <button type="submit" class="px-6 py-2 bg-green-500 text-white rounded hover:bg-green-600">Submit</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto flex justify-between">
+            <div>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:underline">Home</a></li>
+                    <li><a href="#" class="hover:underline">Support</a></li>
+                    <li><a href="#" class="hover:underline">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <p>Powered by Healthcare App</p>
+                <p>&copy; 2025 All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

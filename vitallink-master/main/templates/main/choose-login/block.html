@@ -1,0 +1,27 @@
+{% extends 'main/nav.html' %}
+{% load static %}
+    {% block title %}Patient Monitoring - Registration {% endblock %}
+    {% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/choose/block.css' %}">
+    {% endblock %}
+
+    {% block content %}
+    <div class="container">
+        <!-- Patient Side -->
+        <div class="patient-section">
+            <img src="data:image/png;base64,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" alt="Patient Logo">
+            <h2>Patient Registration</h2>
+            <p>Register as a patient to easily track your health, book appointments, and access medical records securely.</p>
+            <a href="{% url 'patient_information' %}" class="register-btn">Register as Patient</a>
+        </div>
+
+        <!-- Doctor Side -->
+        <div class="doctor-section">
+            <img src="/static/images/doc.png" alt="Doctor Logo">
+            <h2>Doctor Registration</h2>
+            <p>Join as a doctor to manage appointments, monitor patient progress, and provide better healthcare with ease.</p>
+            <a href="http://127.0.0.1:8000/doctors/register" class="register-btn">Register as Doctor</a>
+        </div>
+    </div>
+
+    {% endblock %}

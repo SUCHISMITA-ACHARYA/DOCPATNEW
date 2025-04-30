@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            padding: 30px;
+            line-height: 1.6;
+        }
+        
+        .profile-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .top-row {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        
+        .details-card {
+            flex: 3;
+        }
+        
+        .profile-card {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .records-card {
+            width: 100%;
+        }
+        
+        .profile-picture {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid #2E8BC0;
+        }
+        
+        .edit-profile-btn {
+            background: #2E8BC0;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 16px;
+        }
+        
+        .patient-details p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .patient-details strong {
+            font-size: 16px;
+            min-width: 120px;
+            display: inline-block;
+        }
+        
+        .search-bar {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        
+        .record-types {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .record-type-btn {
+            background: #2E8BC0;
+            color: white;
+            border: none;
+            padding: 12px 0;
+            border-radius: 6px;
+            cursor: pointer;
+            flex: 1;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+        
+        .record-type-btn:hover, .record-type-btn.active {
+            background: #1A629A;
+            transform: translateY(-2px);
+        }
+        
+        .records-list {
+            margin-top: 20px;
+        }
+        
+        .record-item {
+            border: 1px solid #eee;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .record-item:hover {
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .record-item h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #2E8BC0;
+        }
+        
+        .record-item p {
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        
+        .view-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        
+        .no-records {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <!-- Top Row - Two Cards Side by Side -->
+        <div class="top-row">
+            <!-- Left Card - Patient Details -->
+            <div class="card details-card">
+                <h2 style="margin-bottom: 20px; color: #2E8BC0;">Patient Information</h2>
+                <div class="patient-details">
+                    <p><strong>Name:</strong> {{ patient.first_name }} {{ patient.last_name }}</p>
+                    <p><strong>Age:</strong> {{ patient.age }}</p>
+                    <p><strong>Date of Birth:</strong> {{ patient.dob }}</p>
+                    <p><strong>Gender:</strong> {{ patient.gender }}</p>
+                    <p><strong>Contact:</strong> {{ patient.contact_number }}</p>
+                    <p><strong>Address:</strong> {{ patient.address }}</p>
+                </div>
+            </div>
+            
+            <!-- Right Card - Profile Picture -->
+            <div class="card profile-card">
+                {% if patient.profile_picture %}
+                <img src="{{ patient.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
+                {% else %}
+                <div class="profile-picture" style="background: #eee; display: flex; align-items: center; justify-content: center; color: #666;">
+                    No Image
+                </div>
+                {% endif %}
+                <button class="edit-profile-btn">Edit Profile</button>
+            </div>
+        </div>
+        
+        <!-- Bottom Card - Records Section -->
+        <div class="card records-card">
+            <input type="text" placeholder="Search records by title..." class="search-bar" id="search-input">
+            
+            <div class="record-types">
+                <button class="record-type-btn active" data-type="all">All Records</button>
+                <button class="record-type-btn" data-type="prescription">Prescriptions</button>
+                <button class="record-type-btn" data-type="xray">X-Rays</button>
+                <button class="record-type-btn" data-type="scan">Scans</button>
+                <button class="record-type-btn" data-type="report">Reports</button>
+                <button class="record-type-btn" data-type="document">Documents</button>
+            </div>
+            
+            <div class="records-list" id="records-list">
+                {% for record in patient.records.all %}
+                <div class="record-item" data-type="{{ record.document_type }}" data-title="{{ record.title|lower }}">
+                    <h3>{{ record.title }}</h3>
+                    <p>{{ record.description }}</p>
+                    <p><strong>Date:</strong> {{ record.date }}</p>
+                    <p><strong>Type:</strong> {{ record.get_document_type_display }}</p>
+                    {% if record.file %}
+                    <button class="view-btn" onclick="window.open('{{ record.file.url }}', '_blank')">View Document</button>
+                    {% endif %}
+                </div>
+                {% empty %}
+                <div class="no-records">
+                    <p>No medical records found for this patient.</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Filter records by type when buttons are clicked
+        document.querySelectorAll('.record-type-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Update active button styling
+                document.querySelectorAll('.record-type-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const type = this.dataset.type;
+                const searchTerm = document.getElementById('search-input').value.toLowerCase();
+                filterRecords(type, searchTerm);
+            });
+        });
+
+        // Search functionality
+        document.getElementById('search-input').addEventListener('input', function() {
+            const type = document.querySelector('.record-type-btn.active').dataset.type;
+            filterRecords(type, this.value.toLowerCase());
+        });
+
+        // Main filtering function
+        function filterRecords(type, searchTerm) {
+            const records = document.querySelectorAll('.record-item');
+            let hasVisibleRecords = false;
+            
+            records.forEach(record => {
+                const recordType = record.dataset.type;
+                const recordTitle = record.dataset.title;
+                
+                // Check if record matches both type and search filters
+                const typeMatches = type === 'all' || recordType === type;
+                const searchMatches = recordTitle.includes(searchTerm) || searchTerm === '';
+                
+                if (typeMatches && searchMatches) {
+                    record.style.display = 'block';
+                    hasVisibleRecords = true;
+                } else {
+                    record.style.display = 'none';
+                }
+            });
+            
+            // Show "no records" message if none match filters
+            const noRecordsMsg = document.querySelector('.no-records');
+            if (noRecordsMsg) {
+                noRecordsMsg.style.display = hasVisibleRecords ? 'none' : 'block';
+            }
+        }
+    </script>
+</body>
+</html>

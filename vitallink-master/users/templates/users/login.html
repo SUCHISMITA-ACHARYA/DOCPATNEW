@@ -1,0 +1,34 @@
+{% extends 'main/base.html' %}
+{% load static %}
+ {% block title %}Login Page {% endblock%}
+ {% block extra_head %}
+  <link rel="stylesheet" href="/static/css/login/login.css">
+{% endblock %}
+
+  {% block content%}
+<div class= "main">
+  <div class="back">
+    <p><a href="{% url 'home' %}">Back to Homepage </a></p>
+  </div>
+  <div class="login-container">
+    <div class="login-box">
+      <h2>LOGIN</h2>
+      <form method="POST">
+        {% csrf_token %}
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" placeholder="Enter your username" required>
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+        <button type="submit" class="login-button">Login</button>
+      </form>
+      <div class="signup-link">
+        <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

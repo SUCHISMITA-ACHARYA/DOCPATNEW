@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Information</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #d9e7ff, #f1f7ff);
+      color: #333;
+      padding: 20px;
+    }
+
+    .form-container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      max-width: 750px;
+      margin: 50px auto;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 28px;
+      color: #2E8BC0;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #444;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+      background: #f9fbff;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    select {
+      background-color: #f8f8f8;
+    }
+
+    .file-upload-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .file-upload-container select,
+    .file-upload-container input {
+      flex: 1;
+    }
+
+    button {
+      background: #2E8BC0;
+      color: white;
+      padding: 14px 25px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 18px;
+      margin-top: 20px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #1A629A;
+    }
+
+    .add-more-btn {
+      background: #4CAF50;
+      width: auto;
+      padding: 10px 20px;
+      margin-top: 10px;
+    }
+
+    .add-more-btn:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Health Information</h2>
+    <form id="health-form">
+      
+      <div class="form-group">
+        <label for="medical-conditions">Do you have any medical conditions?</label>
+        <textarea id="medical-conditions" name="medical-conditions" rows="4" placeholder="List out your diagnosed conditions" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="allergies">Do you have any allergies?</label>
+        <textarea id="allergies" name="allergies" rows="4" placeholder="List out your specific allergies"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="current-medications">Are you currently taking any medications?</label>
+        <textarea id="current-medications" name="current-medications" rows="4" placeholder="List out the medicine names" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="family-history">Do you have a family history of any medical conditions?</label>
+        <textarea id="family-history" name="family-history" rows="4" placeholder="List out conditions with respective family members" required></textarea>
+      </div>
+
+      <!-- Medical Documents Upload Section -->
+      <div id="medical-docs-section">
+        <div class="form-group">
+          <label for="medical-docs">Upload Medical Reports</label>
+          <div class="file-upload-container">
+            <select name="medical-doc-type[]" required>
+              <option value="">Select document type</option>
+              <option value="Prescription">Prescription</option>
+              <option value="X-ray">X-ray</option>
+              <option value="Scan">Scan</option>
+              <option value="Report">Report</option>
+              <option value="Document">Document</option>
+            </select>
+            <input type="file" name="medical-doc[]" accept=".pdf, .jpg, .png, .jpeg" required>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add More Button -->
+      <button type="button" class="add-more-btn" onclick="addMoreDocs()">Add More Documents</button>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    // Function to add more document upload fields
+    function addMoreDocs() {
+      const docsSection = document.getElementById("medical-docs-section");
+      const newDocGroup = document.createElement("div");
+      newDocGroup.classList.add("form-group");
+
+      newDocGroup.innerHTML = `
+        <div class="file-upload-container">
+          <select name="medical-doc-type[]" required>
+            <option value="">Select document type</option>
+            <option value="Prescription">Prescription</option>
+            <option value="X-ray">X-ray</option>
+            <option value="Scan">Scan</option>
+            <option value="Report">Report</option>
+            <option value="Document">Document</option>
+          </select>
+          <input type="file" name="medical-doc[]" accept=".pdf, .jpg, .png, .jpeg, " required>
+        </div>
+      `;
+
+      docsSection.appendChild(newDocGroup);
+    }
+
+    // Form submission handler
+    document.getElementById("health-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      alert("Health data submitted successfully.");
+    });
+  </script>
+
+</body>
+</html>

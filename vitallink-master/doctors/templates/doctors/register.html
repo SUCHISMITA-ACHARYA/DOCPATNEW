@@ -1,0 +1,61 @@
+{% extends 'main/base.html' %}
+{% load static %}
+    {% block title %}Doctor Registration {% endblock %}
+
+    {% block extra_head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+    {% endblock %}
+{% block content %}
+<div class="main">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Welcome to Healthcare App</h1>
+            <p>A comprehensive solution for patients and doctors.</p>
+        </div>
+    </section>
+
+    <!-- Doctor Registration Form -->
+    <section id="register" class="form-section container">
+        <h2>Doctor Registration</h2>
+
+        {% if messages %}
+            <div class="message-container">
+                {% for message in messages %}
+                    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+            <script>
+                setTimeout(function() {
+                    let messageContainer = document.querySelector('.message-container');
+                    if (messageContainer) {
+                        messageContainer.style.display = 'none';
+                    }
+                }, 3000); // Hide after 3 seconds
+            </script>
+        {% endif %}
+
+        <form action="{% url 'doctors:register' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="form-group">
+                {{ form.non_field_errors }}  <!-- Display non-field errors -->
+                
+                {% for field in form %}
+                    <div class="form-field">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <small class="error">{{ field.errors }}</small>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </section>
+</div>
+{% endblock %}

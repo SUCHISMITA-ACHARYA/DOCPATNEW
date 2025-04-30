@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | VitalLink</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora&family=Nunito:wght@500&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Lora';
+            background-image: url("../images/Index/index-bg.jpg");
+            background-size: cover;
+        }
+
+        nav {
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f8f6f6;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.416);
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .logo h1 {
+            color: #1E90FF;
+            margin: 0;
+            font-family: "Great Vibes", sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .logo h1:hover {
+            color: #000;
+            transition: 0.5s;
+        }
+
+        .mid-navbar {
+            display: flex;
+            margin: 0 20px;
+            width: 40%;
+        }
+
+        .mid-navbar a {
+            padding: 8px 12px;
+            color: #1E90FF;
+            margin-left: 5px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .mid-navbar a:hover {
+            color: #000;
+            border: dashed #1E90FF;
+            border-radius: 1vh;
+        }
+
+        .login {
+            display: flex;
+            align-items: center;
+        }
+
+        .login button {
+            background-color: #1E90FF;
+            border: none;
+            padding: 8px 10px;
+            border-radius: 15px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 1.3rem;
+        }
+
+        .login button a {
+            color: #fff;
+        }
+
+        .login button:hover {
+            background-color: #000;
+            transition: ease 1s;
+        }
+
+        .about-section {
+            padding: 120px 50px 50px;
+            background-color: rgba(255, 255, 255, 0.9);
+            max-width: 1000px;
+            margin: auto;
+            border-radius: 10px;
+        }
+
+        .about-section h1 {
+            font-family: "Great Vibes", cursive;
+            font-size: 4rem;
+            color: #062e56;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .about-section p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #333;
+            text-align: justify;
+        }
+
+        footer {
+            margin-top: 50px;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px 20px;
+        }
+
+        .container-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .col1 h1,
+        .col2 h1,
+        .col3 h1 {
+            font-family: "Great Vibes", cursive;
+            font-size: 2rem;
+            color: #1E90FF;
+            border-bottom: 2px solid #1E90FF;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .col1 li {
+            list-style: none;
+            margin-bottom: 10px;
+        }
+
+        .col1 a {
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .col1 a:hover {
+            color: #1E90FF;
+            border-bottom: 1px dashed #1E90FF;
+        }
+
+        .col2 p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .terms {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .terms a {
+            color: #1E90FF;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .terms a:hover {
+            color: #000;
+        }
+
+        .col3 h3 {
+            font-size: 1.2rem;
+            color: #333;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .col3 p {
+            font-size: 0.9rem;
+            text-align: center;
+            color: #666;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container-3 {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <h1>VitalLink</h1>
+        </div>
+        <div class="mid-navbar">
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Our Mission</a>
+            <a href="#">Support</a>
+        </div>
+        <div class="login">
+            <button><a href="#">Login</a></button>
+            <button><a href="#">Signup</a></button>
+        </div>
+    </nav>
+
+    <div class="about-section">
+        <h1>About VitalLink</h1>
+        <p>
+            At VitalLink, we believe that access to healthcare should be seamless, secure, and smart. Our platform is dedicated to transforming the way patients and healthcare professionals manage, share, and access medical data. By harnessing modern web technologies and secure cloud storage, we enable users to create, update, and maintain their complete medical profiles — all in one place.
+        </p>
+        <p>
+            Whether you're a patient looking to store your vaccination history, lab reports, or prescriptions, or a healthcare provider needing quick access to critical health data, VitalLink is built to support you. Our user-friendly interface, strong encryption protocols, and commitment to privacy ensure that your health information is both accessible and protected.
+        </p>
+        <p>
+            Join us on our mission to empower individuals with control over their health data while fostering stronger connections between patients and care providers. VitalLink — Your Health, Connected & Secure.
+        </p>
+    </div>
+
+    <footer>
+        <div class="container-3">
+            <div class="card col1">
+                <h1>Quick Links</h1>
+                <li><a href="#">Feedback</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Vaccination Schedule</a></li>
+                <li><a href="#">Notification Services</a></li>
+            </div>
+            <div class="col2">
+                <div class="card">
+                    <h1>Support</h1>
+                    <p>Have questions? Get in touch or check out our Help Center.<br><br>You can also text our support team at (+91) 97812 13425 or email us at help@vitallink.com</p>
+                </div>
+                <div class="card">
+                    <div class="terms">
+                        <a href="#">Terms & Conditions</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card col3">
+                <h1>VitalLink</h1>
+                <h3>Your Health,<br>Connected & Secure.</h3>
+                <p>&copy;2025 All Rights Reserved, VitalLink Inc</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
